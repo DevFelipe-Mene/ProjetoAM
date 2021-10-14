@@ -3,33 +3,33 @@ import logo from "../../assets/logo.png";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     return (
-        <div class={sidebarOpen ? "sidebar-responsive" : ""} id="sidebar">
-            <div class="sidebar_title">
-                <div class="sidebar_img">
+        <div className={sidebarOpen ? "sidebar-responsive" : ""} id="sidebar">
+            <div className="sidebar_title">
+                <div className="sidebar_img">
                     <img src={logo} alt="logo" />
                 </div>
-                <i class="fa fa-times" id="sidebarIcon" onClick={() => closeSidebar()}></i>
+                <i className="fa fa-times" id="sidebarIcon" onClick={() => closeSidebar()}></i>
             </div>
-            <div class="sidebar_menu">
-                <div class="sidebar_link active_menu_link">
-                    <i class="fa fa-home" aria-hidden="true"></i>
+            <div className="sidebar_menu">
+                <div className="sidebar_link active_menu_link">
+                    <i className="fa fa-home" aria-hidden="true"></i>
                     <a href="#">Dashboard</a>
                 </div>
                 <br />
-                <div class="sidebar_link">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <a href="#">Pagamentos</a>
+                <div className="sidebar_link">
+                    <i className="fa fa-money" aria-hidden="true"></i>
+                    <a href="#">Detalhes</a>
                 </div>
                 <br />
-                <div class="sidebar_link">
-                    <i class="fa fa-user-secret"></i>
+                <div className="sidebar_link">
+                    <i className="fa fa-user"></i>
                     <a href="#">Account</a>
                 </div>
                 <br />
 
-                <div class="sidebar_link">
-                    <i class="fa fa-exit"></i>
-                    <a href="#">Logo ut</a>
+                <div className="sidebar_link">
+                    <i className="fa fa-sign-out"></i>
+                    <a href="#">Log out</a>
                 </div>
             </div>
         </div>
