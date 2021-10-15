@@ -1,27 +1,24 @@
-import { useState } from "react";
-import Navbar from "./components/navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar"
-import Main from "./components/main/Main" 
+import React from "react";
+import {BrowserRouter} from "react-router-dom";
 
-const App = () => {
+import Sidebar from "./components/sidebar/Sidebar";
+import Main from "./components/main/Main"; 
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  
-  const openSidebar = () =>{
-    setSidebarOpen(true);
-  };
+import Routes from "./Routes";
 
-  const closeSidebar = () =>{
-    setSidebarOpen(false);
-  };
+import "./App.css";
 
-  return (
-    <div className= "container"> 
-      <Navbar sidebarOpen = {sidebarOpen} openSidebar={openSidebar} />
-      <Main />
-      <Sidebar sidebarOpen = {sidebarOpen} closeSidebar={closeSidebar} />
-    </div>
+function App  ()  {
+
+  return (   
+
+    <BrowserRouter>  
+        <Sidebar />
+        <Routes />   
+    </BrowserRouter>
+
   );
-};
+  
+}
 
 export default App;

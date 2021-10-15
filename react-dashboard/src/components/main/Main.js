@@ -1,7 +1,7 @@
 import "./Main.css";
 import hello from "../../assets/hello.svg";
 import Chart from "../charts/Charts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Axios from "axios";
 import React from "react";
 
@@ -14,6 +14,16 @@ const Main = () =>{
     const [listaFunc, setListaFunc] = useState([]);
     const [listaBudget, setListaBudget] = useState([]);
     const [listaTotal, setListaTotal] = useState([]);
+
+    useEffect(()=>{
+        Axios.get('http://localhost:3001/getTotal').then((response)=>{
+            setListaTotal(response.data);
+        });
+        Axios.get('http://localhost:3001/getBudget').then((response)=>{
+            setListaBudget(response.data);
+        });
+
+    }, []);
 
     const adicionar = () =>{
         Axios.post('http://localhost:3001/adicionar', {nome:nome, salario:salario, pais:pais}).then(() =>{
@@ -33,11 +43,11 @@ const Main = () =>{
         });
     }
 
-    const getTotal = () => {
-        Axios.get('http://localhost:3001/getTotal').then((response) =>{
-            setListaTotal(response.data);
-        });
-    }
+    //const getTotal = () => {
+    //    Axios.get('http://localhost:3001/getTotal').then((response) =>{
+    //        setListaTotal(response.data);
+    //    });
+    //}
 
     return(
         <main>
@@ -54,11 +64,10 @@ const Main = () =>{
                     <i className = "fa fa-users fa-2x text-black"></i>
                     <div className = "card_inner">
                         <p className = "text-pimary-p">Número de funcionários</p>
-                        <span className = "font-bold text-title" onLoad={getTotal}>
-                           
-                            {listaTotal.map((val) =>{return <div>{val.num}</div>})}
                             
-                        </span>
+                    </div>
+                    <div className="num">
+                        {listaTotal.map((val) => {return <h4>Total:{val.total}</h4>})}
                     </div>
                 </div>
 
@@ -66,10 +75,9 @@ const Main = () =>{
                     <i className = "fa fa-money fa-2x text-green"></i>
                     <div className = "card_inner">
                         <p className = "text-pimary-p">Budget</p>
-                        <div onLoad={getBudget}>
-                            <p>{listaBudget.map((val) =>{return <div>{val.budget}</div>})} </p>  
-                        </div>
-                            
+                        <div className="num">
+                            <p>{listaBudget.map((val) =>{return <h4>R${val.budget}</h4>})} </p>  
+                        </div>    
                     </div>
                 </div>
 
@@ -139,18 +147,14 @@ const Main = () =>{
                 <br/>
 
                 <div className="listar">
-
                     <button onClick={getLista}>Mostrar funcionarios</button>
-
                     {listaFunc.map((val) =>{
-
                         return <div>{val.nome}</div>;
-
                     })}
-
                 </div>
 
             </div>
+
         </main>
     )
 }

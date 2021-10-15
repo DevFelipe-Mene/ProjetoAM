@@ -3,17 +3,6 @@ import {XYPlot, LineSeries, XAxis, YAxis, VerticalGridLines, HorizontalGridLines
 
 const Chart = () =>{
 
-    const data = [
-        {x: 0, y: 8},
-        {x: 1, y: 7},
-        {x: 2, y: 3},
-        {x: 3, y: 6},
-        {x: 4, y: 8},
-        {x: 5, y: 1},
-        {x: 6, y: 6},
-        {x: 7, y: 8},
-        {x: 8, y: 9},
-    ]
 
     return(
         <div style = {{marginTop: "15px"}}>
@@ -22,9 +11,6 @@ const Chart = () =>{
                 <HorizontalGridLines/>
                 <XAxis/>
                 <YAxis/>
-                <LineSeries data = {data} color = "red"/>
-                <LineSeries data = {data} color = "purple"/>
-                <LineSeries data = {data} color = "yellow"/>
             </XYPlot>
         </div>
     )
