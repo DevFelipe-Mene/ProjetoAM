@@ -1,8 +1,18 @@
 import React from "react";
+import SearchBar from "./SearchBar";
+import Table from "./Table";
 
 const Detalhes = () =>{
+
     return(
-        <div><h1>Detalhes</h1></div>
+        <main>
+
+            <div>
+                <SearchBar/>
+                <Table/>
+            </div>
+
+        </main>
     );
 }
 

@@ -15,7 +15,7 @@ const Sidebar = () => {
 
             <div className="sidebar_menu">
 
-                <div className="sidebar_link active_menu_link">
+                <div className="sidebar_link">
                     <i className="fa fa-home" aria-hidden="true"></i>
                     <Link to="/">Dashboard</Link>
                 </div>

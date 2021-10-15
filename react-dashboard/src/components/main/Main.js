@@ -7,11 +7,7 @@ import React from "react";
 
 const Main = () =>{
 
-    const[nome, setNome] = useState("");
-    const[salario, setSalario] = useState(0);
-    const[pais, setPais] = useState("");
-
-    const [listaFunc, setListaFunc] = useState([]);
+    
     const [listaBudget, setListaBudget] = useState([]);
     const [listaTotal, setListaTotal] = useState([]);
 
@@ -25,33 +21,12 @@ const Main = () =>{
 
     }, []);
 
-    const adicionar = () =>{
-        Axios.post('http://localhost:3001/adicionar', {nome:nome, salario:salario, pais:pais}).then(() =>{
-            console.log("sucess");
-        });
-    };
-
-    const getLista = () => {
-        Axios.get('http://localhost:3001/getLista').then((response) =>{
-            setListaFunc(response.data);
-        });
-    }
-
-    const getBudget = () => {
-        Axios.get('http://localhost:3001/getBudget').then((response) =>{
-            setListaBudget(response.data);
-        });
-    }
-
-    //const getTotal = () => {
-    //    Axios.get('http://localhost:3001/getTotal').then((response) =>{
-    //        setListaTotal(response.data);
-    //    });
-    //}
-
     return(
+        
         <main>
+
             <div className = "main_container">  
+                
                 <div className = "main_title">
                     <img src = {hello} alt = "hello"/>
                     <div className = "main_hello">
@@ -64,7 +39,6 @@ const Main = () =>{
                     <i className = "fa fa-users fa-2x text-black"></i>
                     <div className = "card_inner">
                         <p className = "text-pimary-p">Número de funcionários</p>
-                            
                     </div>
                     <div className="num">
                         {listaTotal.map((val) => {return <h4>Total:{val.total}</h4>})}
@@ -130,27 +104,6 @@ const Main = () =>{
                         <h1>Entrada</h1>
                         <p> R$7000,00</p>
                     </div>
-                </div>
-
-                <div className="form">
-                    <div className = "info">
-                        <label>Nome:</label>
-                        <input type="text" onChangeCapture={(event) =>{setNome(event.target.value);}}/>
-                        <label>Salario:</label>
-                        <input type="int" onChangeCapture={(event) =>{setSalario(event.target.value);}}/>
-                        <label>Pais:</label>
-                        <input type="text" onChangeCapture={(event) =>{setPais(event.target.value);}}/>
-                        <button onClick={adicionar}>Adicionar</button>
-                    </div>
-                </div>
-
-                <br/>
-
-                <div className="listar">
-                    <button onClick={getLista}>Mostrar funcionarios</button>
-                    {listaFunc.map((val) =>{
-                        return <div>{val.nome}</div>;
-                    })}
                 </div>
 
             </div>

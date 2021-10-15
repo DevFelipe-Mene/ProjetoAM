@@ -13,22 +13,8 @@ const db = mysql.createConnection({
     database: "test",
 });
 
-app.post("/adicionar", (req,res) =>{
-    const nome = req.body.nome
-    const salario = req.body.salario
-    const pais = req.body.pais
-
-    db.query("INSERT INTO test.database (nome, salario, pais) VALUES (?,?,?);", [nome, salario, pais], (err, result) =>{
-        if (err) {
-            console.log(err)
-        }else{
-            res.send("Inserido com sucesso");
-        }
-    });
-});
-
-app.get("/getLista", (req, res) =>{  
-    db.query("SELECT nome, salario, pais FROM test.database LIMIT 5;", (err, result) =>{
+app.get("/getDados", (req, res) =>{  
+    db.query("SELECT * FROM test.database LIMIT 1;", (err, result) =>{
         if (err) {
             console.log(err);
         }else{

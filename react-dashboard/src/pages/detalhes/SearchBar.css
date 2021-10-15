@@ -1,0 +1,28 @@
+*{
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+.SearchBar{
+    float:center;
+    width: 100%;
+    padding: 20px 10%;
+    background: #CCC;
+    font-size: 18px;
+}
+.SearchBar input[type="text"]{
+    float:left;
+    width: 50%;
+    margin-top: 0 25%;
+    font-size: 17px;
+}
+
+.botao{
+    position: relative;
+    width: 75px;
+    height: 20px;
+}
+
+.botao:hover{
+    cursor: pointer;
+}
